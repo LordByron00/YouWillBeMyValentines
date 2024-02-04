@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 html {
@@ -67,4 +68,31 @@ body {
 
 .hidden {
   display: none;
+}
+
+.form {
+  margin-top: 100px;
+  padding: 50px;
+  text-align: center;
+}
+
+.form .name {
+  font-size: 25px;
+}
+.form .username {
+  padding: 12px 55px;
+  margin: 25px;
+  text-align: center;
+  font-size: 15px;
+}
+.form input[type=button] {
+  padding: 20px 35px; 
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.form .error {
+  font-size: 23px;
+  color: red;
+  padding: 25px;
 }

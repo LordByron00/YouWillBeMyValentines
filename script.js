@@ -1,10 +1,21 @@
 "use strict";
+import { Octokit } from "https://esm.sh/@octokit/core";
+// const { Octokit } = require('@octokit/core');
 
 const titleElement = document.querySelector(".title");
 const buttonsContainer = document.querySelector(".buttons");
 const yesButton = document.querySelector(".btn--yes");
 const noButton = document.querySelector(".btn--no");
 const catImg = document.querySelector(".cat-img");
+
+const errorP = document.querySelector(".error");
+const textName = document.querySelector(".username");
+const btnName = document.querySelector(".btnUser");
+const formDiv = document.querySelector(".form");
+const containerDiv = document.querySelector(".container");
+
+let name = "";
+
 const messages = [
   "No",
   "Are you sure?",
@@ -25,6 +36,7 @@ const MAX_IMAGES = 7 + 1;
 let imgNumTempt = 0;
 let IDXTemp = 0;
 let btnCount = 0;
+
 yesButton.addEventListener("click", handleYesClick);
 
 noButton.addEventListener("click", function () {
@@ -33,30 +45,46 @@ noButton.addEventListener("click", function () {
     resizeYesButton();
 });
 
-function handleYesClick() {
+btnName.addEventListener("click", hideForm);
+
+function hideForm() {
+  name = textName.value;
+  if (name !== "")  {
+    console.log(name);
+    formDiv.style.display = "none";
+    containerDiv.style.display = "flex";
+  } else {
+    errorP.innerHTML = "Put your damn name!";
+  }
+ 
+}
+
+async function handleYesClick() {
   titleElement.innerHTML = "Yayyy!! :3";
   buttonsContainer.classList.add("hidden");
   catImg.src = `img/cat-yes.jpg`;
+  containerDiv.style.backgroundColor = "#68062d";
 
-  fetch('https://api.github.com/repos/LordByron00/YouWillBeMyValentines/issues', {
-    method: 'POST',
-    headers: {
-        'Authorization': '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',
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        title: 'New Data Entry',
-        body: 'Yes:' + catImg,
-    }),
+  // Octokit.js
+// https://github.com/octokit/core.js#readme.
+  try {
+    const octokit = new Octokit({
+      auth: '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'
     })
-    .then(response => response.json())
-    .then(data => {
-        alert('Data submitted successfully! Issue created: ' + data.html_url);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error submitting data. Please try again.');
-    });
+
+    const createIssueResponse = await octokit.request('POST /repos/LordByron00/YouWillBeMyValentines/issues', {
+      owner: 'LordByron00',
+      repo: 'YouWillBeMyValentines',
+      title: 'user: ' + name,
+      body: 'Yes, I will be your valentines. ' + btnCount + ' NOs',
+      assignees: ['LordByron00'],
+      // milestone: 1,
+      labels: ['documentation'],
+  });
+  } catch (error) {
+    console.error('Error creating issue:', error.message);
+  }
+  // console.log(createIssueResponse.data.html_url);
 }
 
 function resizeYesButton() {

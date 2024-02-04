@@ -13,7 +13,13 @@
     <title>Valentine</title>
   </head>
   <body>
-    <main class="container">
+    <div class="form">
+        <p class="error"></p>
+        <label for="username" class="name">Name:</label><br>
+        <input type="text" name="username" class="username" id="username" required><br>
+        <input type="button" value="Okay" class="btnUser">
+    </div>
+    <main class="container" style="display: none">
       <img class="cat-img" src="img/cat-0.jpg" alt="Picture of a cat" />
       <p class="title">Will you be my Valentine?</p>
       <div class="buttons">
