@@ -36,7 +36,7 @@ const MAX_IMAGES = 7 + 1;
 let imgNumTempt = 0;
 let IDXTemp = 0;
 let btnCount = 0;
-const accessToken = process.env.LORD_API;
+const accessToken = "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";
 
 yesButton.addEventListener("click", handleYesClick);
 
