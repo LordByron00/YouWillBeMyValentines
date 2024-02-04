@@ -97,7 +97,7 @@ function resizeYesButton() {
   const fontSize2 = parseFloat(computedStyle2.getPropertyValue("font-size"));
   const newFontSize2 = fontSize2 - 1;
   noButton.style.fontSize = `${newFontSize2}px`;
-  if (btnCount >= 15) {
+  if (btnCount >= 20) {
     noButton.style.display = "none";
   }
 }
