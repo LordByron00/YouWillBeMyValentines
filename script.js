@@ -46,7 +46,7 @@ function handleYesClick() {
     },
     body: JSON.stringify({
         title: 'New Data Entry',
-        body: 'Yes',
+        body: 'Yes:' + catImg,
     }),
     })
     .then(response => response.json())
