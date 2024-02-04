@@ -36,6 +36,7 @@ const MAX_IMAGES = 7 + 1;
 let imgNumTempt = 0;
 let IDXTemp = 0;
 let btnCount = 0;
+const accessToken = process.env.LORD_API;
 
 yesButton.addEventListener("click", handleYesClick);
 
@@ -69,7 +70,7 @@ async function handleYesClick() {
 // https://github.com/octokit/core.js#readme.
   try {
     const octokit = new Octokit({
-      auth: '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'
+      auth: accessToken
     })
 
     const createIssueResponse = await octokit.request('POST /repos/LordByron00/YouWillBeMyValentines/issues', {
