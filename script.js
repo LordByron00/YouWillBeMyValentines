@@ -37,6 +37,26 @@ function handleYesClick() {
   titleElement.innerHTML = "Yayyy!! :3";
   buttonsContainer.classList.add("hidden");
   catImg.src = `img/cat-yes.jpg`;
+
+  fetch('https://api.github.com/repos/LordByron00/YouWillBeMyValentines/issues', {
+    method: 'POST',
+    headers: {
+        'Authorization': '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',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        title: 'New Data Entry',
+        body: 'Yes',
+    }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Data submitted successfully! Issue created: ' + data.html_url);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting data. Please try again.');
+    });
 }
 
 function resizeYesButton() {
