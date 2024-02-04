@@ -21,22 +21,14 @@ const messages = [
   "Really, really? :("
 ];
 
-const MAX_IMAGES = 5;
+const MAX_IMAGES = 7 + 1;
 
-let play = true;
-let noCount = 0;
+let imgNumTempt = 0;
 
 yesButton.addEventListener("click", handleYesClick);
 
 noButton.addEventListener("click", function () {
-  if (noCount < MAX_IMAGES) {
-    noCount++;
-    const imageIndex = Math.min(noCount, MAX_IMAGES);
-    changeImage(imageIndex);
-    // if (noCount === MAX_IMAGES) {
-      //   play = false;
-      // }
-    }
+    changeImage();
     updateNoButtonText();
     resizeYesButton();
 });
@@ -44,7 +36,7 @@ noButton.addEventListener("click", function () {
 function handleYesClick() {
   titleElement.innerHTML = "Yayyy!! :3";
   buttonsContainer.classList.add("hidden");
-  changeImage("yes");
+  catImg.src = `img/cat-yes.jpg`;
 }
 
 function resizeYesButton() {
@@ -55,16 +47,20 @@ function resizeYesButton() {
 }
 
 function generateMessage() {
-  // const messageIndex = Math.min(noCount, messages.length - 1);
   const index = Math.floor(Math.random() * messages.length);
-  console.log(index);
+  // console.log(index);
   const message = messages[index];
-  console.log(message);
+  // console.log(message);
   return message;
 }
 
-function changeImage(image) {
-  catImg.src = `img/cat-${image}.jpg`;
+function changeImage() {
+  let newImgNum = Math.floor(Math.random() * MAX_IMAGES);
+  if (imgNumTempt == newImgNum) {
+    newImgNum = Math.floor(Math.random() * MAX_IMAGES)
+  }
+  imgNumTempt = newImgNum;
+  catImg.src = `img/cat-${newImgNum}.jpg`;
 }
 
 function updateNoButtonText() {
