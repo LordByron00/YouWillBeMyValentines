@@ -1,6 +1,5 @@
 "use strict";
 import { Octokit } from "https://esm.sh/@octokit/core";
-// const { Octokit } = require('@octokit/core');
 
 const titleElement = document.querySelector(".title");
 const buttonsContainer = document.querySelector(".buttons");
@@ -36,7 +35,6 @@ const MAX_IMAGES = 7 + 1;
 let imgNumTempt = 0;
 let IDXTemp = 0;
 let btnCount = 0;
-const accessToken = "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";
 
 yesButton.addEventListener("click", handleYesClick);
 
@@ -65,27 +63,6 @@ async function handleYesClick() {
   buttonsContainer.classList.add("hidden");
   catImg.src = `img/cat-yes.jpg`;
   containerDiv.style.backgroundColor = "#68062d";
-
-  // Octokit.js
-// https://github.com/octokit/core.js#readme.
-  try {
-    const octokit = new Octokit({
-      auth: accessToken
-    })
-
-    const createIssueResponse = await octokit.request('POST /repos/LordByron00/YouWillBeMyValentines/issues', {
-      owner: 'LordByron00',
-      repo: 'YouWillBeMyValentines',
-      title: 'user: ' + name,
-      body: 'Yes, I will be your valentines. ' + btnCount + ' NOs',
-      assignees: ['LordByron00'],
-      // milestone: 1,
-      labels: ['documentation'],
-  });
-  } catch (error) {
-    console.error('Error creating issue:', error.message);
-  }
-  // console.log(createIssueResponse.data.html_url);
 }
 
 function resizeYesButton() {
