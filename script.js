@@ -22,9 +22,9 @@ const messages = [
 ];
 
 const MAX_IMAGES = 7 + 1;
-
 let imgNumTempt = 0;
-
+let IDXTemp = 0;
+let btnCount = 0;
 yesButton.addEventListener("click", handleYesClick);
 
 noButton.addEventListener("click", function () {
@@ -40,23 +40,36 @@ function handleYesClick() {
 }
 
 function resizeYesButton() {
+  btnCount++;
   const computedStyle = window.getComputedStyle(yesButton);
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize + 60;
   yesButton.style.fontSize = `${newFontSize}px`;
+
+  const computedStyle2 = window.getComputedStyle(noButton);
+  const fontSize2 = parseFloat(computedStyle2.getPropertyValue("font-size"));
+  const newFontSize2 = fontSize2 - 1;
+  noButton.style.fontSize = `${newFontSize2}px`;
+  if (btnCount >= 15) {
+    noButton.style.display = "none";
+  }
 }
 
 function generateMessage() {
-  const index = Math.floor(Math.random() * messages.length);
+  let index = Math.floor(Math.random() * messages.length);
+  while (IDXTemp === index) {
+    index = Math.floor(Math.random() * messages.length);
+  }
+  IDXTemp = index;
   // console.log(index);
   const message = messages[index];
-  // console.log(message);
+  console.log(message);
   return message;
 }
 
 function changeImage() {
   let newImgNum = Math.floor(Math.random() * MAX_IMAGES);
-  if (imgNumTempt == newImgNum) {
+  while (imgNumTempt == newImgNum) {
     newImgNum = Math.floor(Math.random() * MAX_IMAGES)
   }
   imgNumTempt = newImgNum;
