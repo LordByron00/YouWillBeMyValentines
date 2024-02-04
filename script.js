@@ -69,7 +69,7 @@ async function handleYesClick() {
 // https://github.com/octokit/core.js#readme.
   try {
     const octokit = new Octokit({
-      auth: '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'
+      auth: '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'
     })
 
     const createIssueResponse = await octokit.request('POST /repos/LordByron00/YouWillBeMyValentines/issues', {
