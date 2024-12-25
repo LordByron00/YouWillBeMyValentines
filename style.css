@@ -67,8 +67,13 @@ body {
 .btn--no {
   padding: 10px 15px;
   background-color: #f03e3e;
-  min-width: 100px; 
-  width: auto;
+  max-width: 200px; /* Optional: Set a max width for the button */
+  min-width: 100px; /* Ensure */
+  min-height: 50px;
+  height: auto;
+  white-space: normal; /* Allow wrapping */
+  word-wrap: break-word; /* Ensure long words break properly */
+  text-align: center; /* Center-align text within the button */
 }
 
 .hidden {
