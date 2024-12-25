@@ -6,14 +6,14 @@ const buttonsContainer = document.querySelector(".buttons");
 const yesButton = document.querySelector(".btn--yes");
 const noButton = document.querySelector(".btn--no");
 const catImg = document.querySelector(".cat-img");
-
 const errorP = document.querySelector(".error");
-const textName = document.querySelector(".username");
-const btnName = document.querySelector(".btnUser");
-const formDiv = document.querySelector(".form");
 const containerDiv = document.querySelector(".container");
 
-let name = "";
+// const textName = document.querySelector(".username");
+// const btnName = document.querySelector(".btnUser");
+// const formDiv = document.querySelector(".form");
+
+// let name = "";
 
 const messages = [
   "No",
@@ -45,19 +45,18 @@ noButton.addEventListener("click", function () {
     resizeYesButton();
 });
 
-btnName.addEventListener("click", hideForm);
+// btnName.addEventListener("click", hideForm);
 
-function hideForm() {
-  name = textName.value;
-  if (name !== "")  {
-    console.log(name);
-    formDiv.style.display = "none";
-    containerDiv.style.display = "flex";
-  } else {
-    errorP.innerHTML = "Put your damn name!";
-  }
- 
-}
+// function hideForm() {
+//   name = textName.value;
+//   if (name !== "")  {
+//     console.log(name);
+//     formDiv.style.display = "none";
+//     containerDiv.style.display = "flex";
+//   } else {
+//     errorP.innerHTML = "Put your damn name!";
+//   }
+// }
 
 async function handleYesClick() {
   titleElement.innerHTML = "Yayyy!! :3";

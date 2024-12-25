@@ -42,7 +42,6 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
   gap: 1rem;
 }
 
@@ -66,7 +65,10 @@ body {
 }
 
 .btn--no {
+  padding: 10px 15px;
   background-color: #f03e3e;
+  min-width: 100px; 
+  width: auto;
 }
 
 .hidden {
