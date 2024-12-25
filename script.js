@@ -89,23 +89,23 @@ function resizeYesButton() {
   btnCount++;
   const computedStyle = window.getComputedStyle(yesButton);
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
-  const width = parseFloat(computedStyle.getPropertyValue("width"));
-  const height = parseFloat(computedStyle.getPropertyValue("height"));
+  // const width = parseFloat(computedStyle.getPropertyValue("width"));
+  // const height = parseFloat(computedStyle.getPropertyValue("height"));
   if (fontSize < 700) {
-    const newFontSize = fontSize * 1.3;
+    const newFontSize = fontSize * 2;
     yesButton.style.fontSize = `${newFontSize}px`;
   }
-  const newWidth = width * 1.3;
-  const newheight = height * 1.25;
-  yesButton.style.width = `${newWidth}px`;
-  yesButton.style.height = `${newheight}px`;
+  // const newWidth = width * 1.3;
+  // const newheight = height * 1.25;
+  // yesButton.style.width = `${newWidth}px`;
+  // yesButton.style.height = `${newheight}px`;
 
 
   const computedStyle2 = window.getComputedStyle(noButton);
   const fontSize2 = parseFloat(computedStyle2.getPropertyValue("font-size"));
   const newFontSize2 = fontSize2 - 1;
   noButton.style.fontSize = `${newFontSize2}px`;
-  if (btnCount >= 20) {
+  if (btnCount >= 10) {
     noButton.style.display = "none";
   }
 }
